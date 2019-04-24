@@ -1,0 +1,17 @@
+sudo: required
+services:
+- docker
+cache: ccache
+language: generic
+notifications:
+  email:
+    recepients:
+      - dengler@toposens.com
+
+before_script:
+  - docker pull toposens/toposens
+  - docker run toposens/toposens
+
+script:
+  - source gitlab-ros.bash
+  - echo "holy guacamolee"
