@@ -10,11 +10,8 @@ notifications:
 
 before_script:
   - docker pull toposens/toposens
-  - docker run toposens/toposens bin/sh -c "source ros_setup.bash"
-  - echo "test echo"
-  - docker images
-  - docker ps -a
 
 script:
+  - docker run -it toposens/toposens
   - source ros_setup.bash
   - echo "holy guacamolee"
