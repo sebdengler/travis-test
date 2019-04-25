@@ -12,7 +12,7 @@ before_script:
   - docker pull toposens/toposens
 
 script:
-  - docker run toposens/toposens
+  - docker run -d -p 127.0.0.1:80:4567 toposens/toposens
   - docker ps -a
   - docker run toposens/toposens /bin/sh -c "ls /opt/ros/"
   - docker ps -a
