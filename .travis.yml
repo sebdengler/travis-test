@@ -12,6 +12,7 @@ before_script:
   - docker pull toposens/toposens
 
 script:
-  - docker run -it -p 8080:80 toposens/toposens
+  - docker run toposens/toposens
+  - docker exec -ti $(docker ps -aq) sh -c "ls /opt/ros/"
   - source ros_setup.bash
   - echo "holy guacamolee"
