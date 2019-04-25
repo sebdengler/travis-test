@@ -11,6 +11,7 @@ notifications:
 before_script:
   - docker pull toposens/toposens
   - docker run toposens/toposens
+  - ls /opt/ros/
 
 script:
   - source ros_setup.bash
