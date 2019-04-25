@@ -16,4 +16,3 @@ script:
   - docker exec $(docker ps -q) bash -c "ls"
   - docker exec $(docker ps -q) bash -c "source travis-test/ros_setup.bash"
   - docker ps
-  - echo "holy guacamolee"
