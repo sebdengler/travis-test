@@ -13,7 +13,6 @@ before_script:
 
 script:
   - docker run -t -d toposens/toposens bash -c "git clone https://github.com/sebdengler/travis-test.git && ls"
-  - docker exec $(docker ps -q) ls
+  - docker exec $(docker ps -q) bash -c "source travis-test/ros_setup.bash"
   - docker ps
-  - source ros_setup.bash
   - echo "holy guacamolee"
