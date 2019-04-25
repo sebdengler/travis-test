@@ -10,7 +10,8 @@ notifications:
 
 before_script:
   - docker pull toposens/toposens
-  - docker run toposens/toposens
+  - docker run -it toposens/toposens bash
+  - echo "test echo"
   - docker images
   - docker ps -a
 
