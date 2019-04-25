@@ -8,6 +8,10 @@ notifications:
     recepients:
       - dengler@toposens.com
 
+before_script:
+  - docker pull toposens/toposens
+  - docker run toposens/toposens
+
 script:
   - source ros_setup.bash
   - echo "holy guacamolee"
