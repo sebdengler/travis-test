@@ -12,7 +12,7 @@ before_script:
   - docker pull toposens/toposens
 
 script:
-  - docker run -t toposens/toposens bash -c "git clone https://github.com/sebdengler/travis-test.git && ls"
+  - docker run -t -d toposens/toposens bash -c "git clone https://github.com/sebdengler/travis-test.git && ls"
   - docker exec $(docker ps -q) ls
   - docker ps
   - source ros_setup.bash
