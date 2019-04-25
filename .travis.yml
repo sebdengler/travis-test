@@ -10,9 +10,7 @@ notifications:
 
 before_script:
   - docker pull toposens/toposens
-  - docker run -d -p 127.0.0.1:80:4567 toposens/toposens /bin/sh -c "cd /root/toposens; bundle exec foreman start;"
-  - docker ps -a
-  - docker run toposens/toposens /bin/sh -c "cd /root/toposens; bundle exec rake test"
+  - docker run toposens/toposens
 
 script:
   - source ros_setup.bash
