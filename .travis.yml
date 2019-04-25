@@ -12,7 +12,7 @@ before_script:
   - docker pull toposens/toposens
 
 script:
-  - docker run -t -d toposens/toposens bash -c "cd /home/toposens && git clone https://github.com/sebdengler/travis-test.git"
-  - docker exec $(docker ps -q) bash -c "ls /home/"
+  - docker run -t -d toposens/toposens
+  - docker exec $(docker ps -q) bash -c "cd /home/toposens && git clone https://github.com/sebdengler/travis-test.git"
   - docker exec $(docker ps -q) bash -c "ls /home/toposens/travis-test/"
   - docker ps
