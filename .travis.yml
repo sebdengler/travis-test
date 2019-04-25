@@ -13,5 +13,5 @@ before_script:
   - docker run toposens/toposens
 
 script:
-  - source ros.bash
+  - source ros_setup.bash
   - echo "holy guacamolee"
