@@ -13,5 +13,6 @@ before_script:
 
 script:
   - docker run -t -d toposens/toposens bash -c "git clone https://github.com/sebdengler/travis-test.git"
+  - docker exec $(docker ps -q) bash -c "ls"
   - docker exec $(docker ps -q) bash -c "ls /travis-test/"
   - docker ps
