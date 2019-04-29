@@ -7,9 +7,9 @@ echo "$basename ($TRAVIS_BUILD_DIR)"
 echo "$dirname ($TRAVIS_BUILD_DIR)"
 GITHUB_URL="https://github.com"
 URL=${TRAVIS_BUILD_DIR/"/home/travis/build"/$GITHUB_URL}
-echo URL
+echo $URL
 URL=${TRAVIS_BUILD_DIR//home/travis/build/$GITHUB_URL}
-echo URL
+echo $URL
 
 : '
 # Run Docker container
