@@ -24,7 +24,8 @@ fi
 #export CCACHE_DIR=${PWD}/ccache
 cd /root
 ls -a
-
+cd .ccache
+ls -a
 
 : '
 # Display system information
