@@ -68,10 +68,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs
-# )
+#generate_messages(
+#  DEPENDENCIES
+#  std_msgs
+#)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -103,9 +103,9 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
+  INCLUDE_DIRS include
 #  LIBRARIES travis_test
-#  CATKIN_DEPENDS roscpp rospy std_msgs
+  CATKIN_DEPENDS roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
 
@@ -116,7 +116,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+  include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -135,7 +135,9 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/travis_test_node.cpp)
 
-add_executable(travis_test_node src/test.cpp)
+add_executable(test src/test.cpp)
+target_link_libraries(test ${catkin_LIBRARIES})
+#add_dependencies(test travis_test_generate_messages_cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
