@@ -52,9 +52,7 @@ cd ../..
 # Lint
 catkin_lint -W3 .
 
-
 # Make
 catkin_make_isolated
-
 
 # Test
