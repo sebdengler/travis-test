@@ -1,6 +1,5 @@
 #!/bin/bash
 
-ls -a
 
 # Run Docker container
 if ! [ "$IN_DOCKER" ]; then
@@ -19,14 +18,9 @@ if ! [ "$IN_DOCKER" ]; then
   exit
 fi
 
-
+export CCACHE_DIR=${PWD}/ccache
 ls -a
 
-git submodule update --init --recursive
-git status
-
-
-: '
 # Display system information
 echo "##############################################"
 uname -a
@@ -63,4 +57,3 @@ catkin_make_isolated
 
 
 # Test
-'
