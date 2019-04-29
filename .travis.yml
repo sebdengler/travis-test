@@ -5,6 +5,11 @@ cache: ccache
 
 language: generic
 
+notifications:
+  email:
+    on_success: always
+    on_failure: always
+
 env:
   global:
     - DOCKER_IMAGE=toposens/toposens
