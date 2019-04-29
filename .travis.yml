@@ -9,6 +9,8 @@ notifications:
   email:
     recepients:
       - dengler@toposens.com
+    on_success: always
+    on_failure: always
 
 env:
   global:
