@@ -1,7 +1,5 @@
 #!/bin/bash
 
-URL=${TRAVIS_BUILD_DIR/"/home/travis/build"/"https://github.com"}
-echo $URL
 
 # Run Docker container
 if ! [ "$IN_DOCKER" ]; then
@@ -20,7 +18,19 @@ if ! [ "$IN_DOCKER" ]; then
   exit
 fi
 
+echo "ls:"
+ls
+echo "ls -a:"
+ls -a
+echo "PWD = $PWD"
+git status
+cd /root
+echo "ls in root:"
+ls
+echo "ls -a in root:"
+ls -a
 
+: '
 # Display system information
 echo "##############################################"
 uname -a
@@ -55,3 +65,4 @@ catkin_make_isolated
 
 
 # Test
+'
