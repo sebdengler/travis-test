@@ -1,6 +1,9 @@
 #!/bin/bash
 
+URL=${TRAVIS_BUILD_DIR/"/home/travis/build"/"https://github.com"}
+echo $URL
 
+.'
 # Run Docker container
 if ! [ "$IN_DOCKER" ]; then
 
@@ -57,3 +60,4 @@ catkin_make_isolated
 
 
 #source ros_setup.bash
+'
