@@ -12,6 +12,7 @@ if ! [ "$IN_DOCKER" ]; then
 
   docker run \
   -e IN_DOCKER=true \
+  -e TRAVIS_BRANCH \
   -v $(pwd):/root/$(basename $PWD) \
   -w /root/$(basename $PWD) \
   -t \
@@ -40,6 +41,8 @@ gcc --version
 echo "CXXFLAGS = ${CXXFLAGS}"
 cmake --version
 echo "##############################################"
+
+echo "TRAVIS_BRANCH = $TRAVIS_BRANCH"
 
 # Setup ROS
 source /opt/ros/$(ls /opt/ros/)/setup.bash
