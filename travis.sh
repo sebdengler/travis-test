@@ -2,6 +2,10 @@
 
 echo "in travis.sh"
 
+if ! [ "$IN_DOCKER" ]; then
+  docker pull $DOCKER_IMAGE
+fi
+
 #docker pull toposens/toposens
 
 #docker run -t -d toposens/toposens

@@ -3,13 +3,16 @@ services:
 - docker
 cache: ccache
 language: generic
+
 notifications:
   email:
     recepients:
       - dengler@toposens.com
 
+env:
+  - DOCKER_IMAGE=toposens/toposens
+
 before_script:
-  - echo "in before_script"
   - ln -s . .travis_test
 
 script:
