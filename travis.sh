@@ -3,6 +3,7 @@
 echo "in travis.sh"
 
 if ! [ "$IN_DOCKER" ]; then
+  echo "TRAVIS_BUILD_DIR_1 = $TRAVIS_BUILD_DIR"
   echo "if in docker"
   docker pull $DOCKER_IMAGE
 
@@ -12,6 +13,7 @@ if ! [ "$IN_DOCKER" ]; then
 
   docker exec $(docker ps -q) bash -c "cd /home/ && git clone https://github.com/sebdengler/travis-test.git"
   docker exec $(docker ps -q) bash -c "cd /home/travis-test/ && source travis.sh"
+
   exit
 fi
 
@@ -30,8 +32,8 @@ echo "##############################################"
 source /opt/ros/$(ls /opt/ros/)/setup.bash
 
 # Prepare workspace
-echo "CI_PROJECT_DIR = ${CI_PROJECT_DIR}"
-
+echo "TRAVIS_BUILD_DIR_2 = $TRAVIS_BUILD_DIR"
+mkdir -p src/$TRAVIS_BUILD_DIR
 
 
 
