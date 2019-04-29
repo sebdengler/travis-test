@@ -1,7 +1,10 @@
 sudo: required
 services:
 - docker
-cache: ccache
+cache:
+  paths:
+    - ccache/
+
 language: generic
 
 notifications:

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+ls -a
 
 # Run Docker container
 if ! [ "$IN_DOCKER" ]; then
@@ -18,6 +19,8 @@ if ! [ "$IN_DOCKER" ]; then
   exit
 fi
 
+
+ls -a
 
 git submodule update --init --recursive
 git status
