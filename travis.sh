@@ -17,7 +17,7 @@ fi
 
 echo "in docker container"
 
-# ROS setup
+# Display system information
 echo "##############################################"
 uname -a
 lsb_release -a
@@ -26,10 +26,11 @@ echo "CXXFLAGS = ${CXXFLAGS}"
 cmake --version
 echo "##############################################"
 
+# Setup ROS
 source /opt/ros/$(ls /opt/ros/)/setup.bash
 
-
-
+# Prepare workspace
+echo ${CI_PROJECT_DIR}
 
 
 
