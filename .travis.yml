@@ -11,9 +11,7 @@ notifications:
 
 env:
   - DOCKER_IMAGE=toposens/toposens
-
-before_script:
-  - ln -s . .travis_test
+  - SCRIPT=travis.sh
 
 script:
-  - .travis_test/travis.sh
+  - ./$SCRIPT
