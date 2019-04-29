@@ -1,6 +1,8 @@
 #!/bin/bash
 
+echo $PWD
 
+: '
 # Run Docker container
 if ! [ "$IN_DOCKER" ]; then
 
@@ -17,10 +19,13 @@ if ! [ "$IN_DOCKER" ]; then
 
   exit
 fi
+'
 
 export CCACHE_DIR=${PWD}/ccache
 ls -a
 
+
+: '
 # Display system information
 echo "##############################################"
 uname -a
@@ -48,6 +53,7 @@ cd /catkin_ws/src/$PROJECT_NAME
 git submodule update --init --recursive
 cd ../..
 
+
 # Lint
 catkin_lint -W3 .
 
@@ -57,3 +63,4 @@ catkin_make_isolated
 
 
 # Test
+'
