@@ -1,6 +1,5 @@
 #!/bin/bash
 
-echo $PWD
 
 # Run Docker container
 if ! [ "$IN_DOCKER" ]; then
