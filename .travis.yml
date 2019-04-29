@@ -10,6 +10,7 @@ notifications:
 
 before_script:
   - echo "in before_script"
+  - ln -s . .travis_test
 
 script:
-  - ./travis.sh
+  - .travis_test/travis.sh
