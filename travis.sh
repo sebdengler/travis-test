@@ -69,7 +69,7 @@ git clone $URL -b $TRAVIS_BRANCH /catkin_ws/src/$PROJECT_NAME
 # Initialize git submodules
 cd /catkin_ws/src/$PROJECT_NAME
 git submodule update --init --recursive
-cd ..
+cd ../..
 
 # Lint
 catkin_lint -W3 .
