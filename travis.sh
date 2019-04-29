@@ -2,6 +2,9 @@
 
 echo "in travis.sh"
 
+echo "1:"
+ls
+
 if ! [ "$IN_DOCKER" ]; then
   #echo "TRAVIS_BUILD_DIR_1 = $TRAVIS_BUILD_DIR"
   #echo "if in docker"
@@ -23,6 +26,9 @@ if ! [ "$IN_DOCKER" ]; then
 
   exit
 fi
+
+echo "2:"
+ls
 
 echo "in docker container"
 
