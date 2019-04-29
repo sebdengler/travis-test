@@ -9,11 +9,7 @@ notifications:
       - dengler@toposens.com
 
 before_script:
-  - docker pull toposens/toposens
-  - travis_run echo "hello there"
+  - echo "in before_script"
 
 script:
-  - docker run -t -d toposens/toposens
-  - docker exec $(docker ps -q) bash -c "cd /home/ && git clone https://github.com/sebdengler/travis-test.git"
-  - docker exec $(docker ps -q) bash -c "cd /home/travis-test/ && source ros_setup.bash"
-  - docker ps
+  - travis.sh
