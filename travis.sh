@@ -18,7 +18,7 @@ if ! [ "$IN_DOCKER" ]; then
   exit
 fi
 
-
+: '
 PROJECT_NAME="testing"
 rm -rf src && mkdir -p src/${PROJECT_NAME}
 mv $(ls -a | grep -Ev '^.$|^..$|^ccache$|^src$') src/${PROJECT_NAME}
@@ -27,7 +27,7 @@ cd src
 ls -a
 cd testing
 ls -a
-
+'
 
 : '
 echo "ls:"
@@ -43,7 +43,7 @@ echo "ls -a in root:"
 ls -a
 '
 
-: '
+
 # Display system information
 echo "##############################################"
 uname -a
@@ -59,13 +59,16 @@ source /opt/ros/$(ls /opt/ros/)/setup.bash
 
 
 # Prepare workspace
+PROJECT_NAME="testing"
 URL=${TRAVIS_BUILD_DIR/"/home/travis/build"/"https://github.com"}
-mkdir -p src
-git clone $URL -b $TRAVIS_BRANCH src/repository
+cd /root
+mkdir -p /catkin_ws/src
+cd /catkin_ws/src
+git clone $URL -b $TRAVIS_BRANCH /catkin_ws/src/$PROJECT_NAME
 
 
 # Initialize git submodules
-cd src/repository
+cd $PROJECT_NAME
 git submodule update --init --recursive
 cd ..
 
@@ -78,4 +81,3 @@ catkin_make_isolated
 
 
 # Test
-'
