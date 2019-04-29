@@ -18,31 +18,6 @@ if ! [ "$IN_DOCKER" ]; then
   exit
 fi
 
-: '
-PROJECT_NAME="testing"
-rm -rf src && mkdir -p src/${PROJECT_NAME}
-mv $(ls -a | grep -Ev '^.$|^..$|^ccache$|^src$') src/${PROJECT_NAME}
-ls -a
-cd src
-ls -a
-cd testing
-ls -a
-'
-
-: '
-echo "ls:"
-ls
-echo "ls -a:"
-ls -a
-echo "PWD = $PWD"
-git status
-cd /root
-echo "ls in root:"
-ls
-echo "ls -a in root:"
-ls -a
-'
-
 
 # Display system information
 echo "##############################################"
