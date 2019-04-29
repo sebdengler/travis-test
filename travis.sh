@@ -18,4 +18,25 @@ fi
 echo "in docker container"
 
 # ROS setup
-source ros_setup.bash
+echo "##############################################"
+uname -a
+lsb_release -a
+gcc --version
+echo "CXXFLAGS = ${CXXFLAGS}"
+cmake --version
+echo "##############################################"
+
+source /opt/ros/$(ls /opt/ros/)/setup.bash
+
+
+
+
+
+
+
+
+
+
+
+
+#source ros_setup.bash
