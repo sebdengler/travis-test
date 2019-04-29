@@ -11,6 +11,7 @@ if ! [ "$IN_DOCKER" ]; then
   -e IN_DOCKER=true \
   -v $(pwd):/root/$(basename $PWD) \
   -w /root/$(basename $PWD) \
+  -t \
   $DOCKER_IMAGE /root/$(basename $PWD)/./travis.sh
 
 #  docker run -t -d \
