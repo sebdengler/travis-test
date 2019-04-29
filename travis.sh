@@ -21,13 +21,6 @@ if ! [ "$IN_DOCKER" ]; then
 fi
 
 
-#export CCACHE_DIR=${PWD}/ccache
-cd /root
-ls -a
-cd .ccache
-ls -a
-
-: '
 # Display system information
 echo "##############################################"
 uname -a
@@ -40,6 +33,7 @@ echo "##############################################"
 
 # Setup ROS
 source /opt/ros/$(ls /opt/ros/)/setup.bash
+export CCACHE_DIR=/root/ccache
 
 
 # Prepare workspace
@@ -65,4 +59,3 @@ catkin_make_isolated
 
 
 # Test
-'
