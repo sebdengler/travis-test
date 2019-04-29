@@ -30,7 +30,7 @@ echo "##############################################"
 source /opt/ros/$(ls /opt/ros/)/setup.bash
 
 # Prepare workspace
-echo ${CI_PROJECT_DIR}
+echo "CI_PROJECT_DIR = ${CI_PROJECT_DIR}"
 
 
 
