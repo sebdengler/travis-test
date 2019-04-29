@@ -19,6 +19,11 @@ if ! [ "$IN_DOCKER" ]; then
 fi
 
 
+git submodule update --init --recursive
+git status
+
+
+: '
 # Display system information
 echo "##############################################"
 uname -a
@@ -55,3 +60,4 @@ catkin_make_isolated
 
 
 # Test
+'
