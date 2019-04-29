@@ -34,9 +34,8 @@ source /opt/ros/$(ls /opt/ros/)/setup.bash
 
 # Prepare workspace
 URL=${TRAVIS_BUILD_DIR/"/home/travis/build"/"https://github.com"}
-echo $URL
 mkdir -p src
-git clone $URL -b $TRAVIS_BRANCH src/travis_test
+git clone $URL -b $TRAVIS_BRANCH src/travis-test
 
 
 # Initialize git submodules
