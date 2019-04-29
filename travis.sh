@@ -2,12 +2,14 @@
 
 echo "in travis.sh"
 
-echo "1:"
-ls
+echo "$TRAVIS_BUILD_DIR"
+echo "$basename ($TRAVIS_BUILD_DIR)"
+echo "$dirname ($TRAVIS_BUILD_DIR)"
 
+: '
+# Run Docker container
 if ! [ "$IN_DOCKER" ]; then
-  #echo "TRAVIS_BUILD_DIR_1 = $TRAVIS_BUILD_DIR"
-  #echo "if in docker"
+
   docker pull $DOCKER_IMAGE
 
   docker run \
@@ -18,20 +20,9 @@ if ! [ "$IN_DOCKER" ]; then
   -t \
   $DOCKER_IMAGE /root/$(basename $PWD)/./$SCRIPT
 
-#  docker run -t -d \
-#  -e IN_DOCKER=true \
-#  $DOCKER_IMAGE
-
-#  docker exec $(docker ps -q) bash -c "cd /home/ && git clone https://github.com/sebdengler/travis-test.git"
-#  docker exec $(docker ps -q) bash -c "cd /home/travis-test/ && source travis.sh"
-
   exit
 fi
 
-echo "2:"
-ls
-
-echo "in docker container"
 
 # Display system information
 echo "##############################################"
@@ -42,30 +33,33 @@ echo "CXXFLAGS = ${CXXFLAGS}"
 cmake --version
 echo "##############################################"
 
-echo "TRAVIS_BRANCH = $TRAVIS_BRANCH"
 
 # Setup ROS
 source /opt/ros/$(ls /opt/ros/)/setup.bash
 
-# Prepare workspace
-#echo "TRAVIS_BUILD_DIR_2 = $TRAVIS_BUILD_DIR"
-mkdir -p src
-cd src
-git clone https://github.com/sebdengler/travis-test.git -b $TRAVIS_BRANCH
-cd travis-test
-git status
-#cd travis-test
-cd ../..
-ls
 
-#
+# Prepare workspace
+mkdir -p src
+git clone https://github.com/sebdengler/travis-test.git -b $TRAVIS_BRANCH src/travis_test
+
+
+# Initialize git submodules
+cd src/
+
+
+# Lint
 catkin_lint -W3 .
 
+
+# Make
 catkin_make_isolated
 
+
+# Test
 
 
 
 
 
 #source ros_setup.bash
+'
