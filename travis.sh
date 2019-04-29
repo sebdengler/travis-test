@@ -3,8 +3,8 @@
 echo "in travis.sh"
 
 if ! [ "$IN_DOCKER" ]; then
-  echo "TRAVIS_BUILD_DIR_1 = $TRAVIS_BUILD_DIR"
-  echo "if in docker"
+  #echo "TRAVIS_BUILD_DIR_1 = $TRAVIS_BUILD_DIR"
+  #echo "if in docker"
   docker pull $DOCKER_IMAGE
 
   docker run \
@@ -12,7 +12,7 @@ if ! [ "$IN_DOCKER" ]; then
   -v $(pwd):/root/$(basename $PWD) \
   -w /root/$(basename $PWD) \
   -t \
-  $DOCKER_IMAGE /root/$(basename $PWD)/./travis.sh
+  $DOCKER_IMAGE /root/$(basename $PWD)/./$SCRIPT
 
 #  docker run -t -d \
 #  -e IN_DOCKER=true \
@@ -39,9 +39,12 @@ echo "##############################################"
 source /opt/ros/$(ls /opt/ros/)/setup.bash
 
 # Prepare workspace
-echo "TRAVIS_BUILD_DIR_2 = $TRAVIS_BUILD_DIR"
-mkdir -p src/$TRAVIS_BUILD_DIR
-
+#echo "TRAVIS_BUILD_DIR_2 = $TRAVIS_BUILD_DIR"
+mkdir -p src
+cd /src
+git clone https://github.com/sebdengler/travis-test.git
+cd travis-test
+ls
 
 
 
