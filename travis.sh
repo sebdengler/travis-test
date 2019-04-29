@@ -63,12 +63,11 @@ PROJECT_NAME="testing"
 URL=${TRAVIS_BUILD_DIR/"/home/travis/build"/"https://github.com"}
 cd /root
 mkdir -p /catkin_ws/src
-cd /catkin_ws/src
 git clone $URL -b $TRAVIS_BRANCH /catkin_ws/src/$PROJECT_NAME
 
 
 # Initialize git submodules
-cd $PROJECT_NAME
+cd /catkin_ws/src/$PROJECT_NAME
 git submodule update --init --recursive
 cd ..
 
