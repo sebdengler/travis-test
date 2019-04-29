@@ -7,12 +7,18 @@ if ! [ "$IN_DOCKER" ]; then
   echo "if in docker"
   docker pull $DOCKER_IMAGE
 
-  docker run -t -d \
+  docker run \
   -e IN_DOCKER=true \
-  $DOCKER_IMAGE
+  -v $(pwd):/root/$(basename $PWD) \
+  -w /root/$(basename $PWD) \
+  $DOCKER_IMAGE /root/$(basename $PWD)/./travis.sh
 
-  docker exec $(docker ps -q) bash -c "cd /home/ && git clone https://github.com/sebdengler/travis-test.git"
-  docker exec $(docker ps -q) bash -c "cd /home/travis-test/ && source travis.sh"
+#  docker run -t -d \
+#  -e IN_DOCKER=true \
+#  $DOCKER_IMAGE
+
+#  docker exec $(docker ps -q) bash -c "cd /home/ && git clone https://github.com/sebdengler/travis-test.git"
+#  docker exec $(docker ps -q) bash -c "cd /home/travis-test/ && source travis.sh"
 
   exit
 fi
