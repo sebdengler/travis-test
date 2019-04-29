@@ -5,13 +5,6 @@ cache: ccache
 
 language: generic
 
-notifications:
-  email:
-    recepients:
-      - dengler@toposens.com
-    on_success: always
-    on_failure: always
-
 env:
   global:
     - DOCKER_IMAGE=toposens/toposens
