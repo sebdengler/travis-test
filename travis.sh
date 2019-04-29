@@ -47,7 +47,7 @@ source /opt/ros/$(ls /opt/ros/)/setup.bash
 # Prepare workspace
 #echo "TRAVIS_BUILD_DIR_2 = $TRAVIS_BUILD_DIR"
 mkdir -p src
-cd /src
+cd src
 git clone https://github.com/sebdengler/travis-test.git
 #cd travis-test
 cd ..
