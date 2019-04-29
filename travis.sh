@@ -49,9 +49,14 @@ source /opt/ros/$(ls /opt/ros/)/setup.bash
 mkdir -p src
 cd /src
 git clone https://github.com/sebdengler/travis-test.git
-cd travis-test
+#cd travis-test
+cd ..
 ls
 
+#
+catkin_lint -W3 .
+
+catkin_make_isolated
 
 
 
