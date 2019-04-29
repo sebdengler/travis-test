@@ -2,7 +2,6 @@
 
 echo $PWD
 
-: '
 # Run Docker container
 if ! [ "$IN_DOCKER" ]; then
 
@@ -13,15 +12,17 @@ if ! [ "$IN_DOCKER" ]; then
   -e TRAVIS_BRANCH \
   -e TRAVIS_BUILD_DIR \
   -v $(pwd):/root/$(basename $PWD) \
+  -v $HOME/.ccache:/root/.ccache \
   -w /root/$(basename $PWD) \
   -t \
   $DOCKER_IMAGE /root/$(basename $PWD)/./$SCRIPT
 
   exit
 fi
-'
 
-export CCACHE_DIR=${PWD}/ccache
+
+#export CCACHE_DIR=${PWD}/ccache
+cd /root
 ls -a
 
 
