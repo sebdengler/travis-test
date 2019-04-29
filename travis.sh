@@ -1,8 +1,6 @@
 #!/bin/bash
 
-URL=${TRAVIS_BUILD_DIR/"/home/travis/build"/"https://github.com"}
 
-: '
 # Run Docker container
 if ! [ "$IN_DOCKER" ]; then
 
@@ -35,8 +33,10 @@ source /opt/ros/$(ls /opt/ros/)/setup.bash
 
 
 # Prepare workspace
+URL=${TRAVIS_BUILD_DIR/"/home/travis/build"/"https://github.com"}
+echo $URL
 mkdir -p src
-git clone https://github.com/sebdengler/travis-test.git -b $TRAVIS_BRANCH src/travis_test
+git clone $URL -b $TRAVIS_BRANCH src/travis_test
 
 
 # Initialize git submodules
@@ -58,4 +58,3 @@ catkin_make_isolated
 
 
 #source ros_setup.bash
-'
