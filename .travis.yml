@@ -10,10 +10,12 @@ notifications:
       - dengler@toposens.com
 
 env:
-  - DOCKER_IMAGE=toposens/toposens
+  global:
+    - DOCKER_IMAGE=toposens/toposens
+    - SCRIPT=travis.sh
 
 before_script:
   - ln -s . .travis_test
 
 script:
-  - .travis_test/travis.sh
+  - .travis_test/$SCRIPT
